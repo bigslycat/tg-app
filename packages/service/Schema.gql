@@ -1,0 +1,20 @@
+type Query {
+	userData(initData: String!): User!
+}
+
+type User {
+	id: Int!
+	isBot: Boolean
+	firstName: String!
+	lastName: String
+	username: String
+	languageCode: String
+	isPremium: Boolean
+	addedToAttachmentMenu: Boolean
+	allowsWriteToPm: Boolean
+	photoUrl: String
+}
+
+schema {
+	query: Query
+}
