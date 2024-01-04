@@ -20,7 +20,7 @@ fn rocket() -> _ {
 
     rocket::build()
         .configure(rocket::Config {
-            port: 8080,
+            port: 80,
             address: IpAddr::V4(Ipv4Addr::new(0, 0, 0, 0)),
             ..rocket::Config::default()
         })
