@@ -44,3 +44,4 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           repository: bigslycat/tg-app-validate-service
+          short-description: ${{ github.event.repository.description }}
