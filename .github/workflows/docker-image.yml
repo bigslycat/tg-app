@@ -1,0 +1,46 @@
+name: Publish Docker image
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+
+  release:
+    types: [published]
+
+jobs:
+  push_to_registry:
+    name: Push Docker image to Docker Hub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Write release version
+        run: |
+          TAG=${{ github.ref_name }}
+          IMAGE_VERSION=${TAG#v}
+          echo Tag ${TAG}
+          echo Image version ${IMAGE_VERSION}
+          echo "IMAGE_VERSION=${IMAGE_VERSION}" >> ${GITHUB_ENV}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: bigslycat/tg-app-validate-service:latest,bigslycat/tg-app-validate-service:${{ env.IMAGE_VERSION }}
+
+      - name: Update repo description
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: bigslycat/tg-app-validate-service
