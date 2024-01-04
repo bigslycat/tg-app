@@ -1,6 +1,6 @@
 use crate::{
     types::{Env, ParseError},
-    user::User,
+    user::WebAppUser,
 };
 use async_graphql::{Context, Error as GqlError, FieldResult, Object};
 use std::collections::BTreeMap;
@@ -10,7 +10,7 @@ pub struct Query;
 
 #[Object(extends)]
 impl Query {
-    pub async fn user_data(&self, ctx: &Context<'_>, init_data: String) -> FieldResult<User> {
+    pub async fn user_data(&self, ctx: &Context<'_>, init_data: String) -> FieldResult<WebAppUser> {
         let data = init_data
             .split('&')
             .map(|s| {
@@ -27,7 +27,7 @@ impl Query {
             .collect::<BTreeMap<String, String>>();
 
         let env = ctx.data::<Env>().unwrap();
-        let user = User::from_query(&env.bot_token, data)?;
+        let user = WebAppUser::from_query(&env.bot_token, data)?;
         Ok(user)
     }
 }

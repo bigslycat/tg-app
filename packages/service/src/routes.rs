@@ -1,6 +1,6 @@
 use crate::{
     types::{Env, ErrorResponse},
-    user::User,
+    user::WebAppUser,
     Query,
 };
 use async_graphql::{http::GraphiQLSource, EmptyMutation, EmptySubscription, Schema as GqlSchema};
@@ -14,8 +14,8 @@ pub type Schema = GqlSchema<Query, EmptyMutation, EmptySubscription>;
 pub async fn parse_request(
     env: &State<Env>,
     query: BTreeMap<String, String>,
-) -> Result<Json<User>, ErrorResponse> {
-    let user = User::from_query(&env.bot_token, query)?;
+) -> Result<Json<WebAppUser>, ErrorResponse> {
+    let user = WebAppUser::from_query(&env.bot_token, query)?;
     Ok(Json(user))
 }
 

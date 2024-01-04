@@ -1,8 +1,8 @@
 type Query {
-	userData(initData: String!): User!
+	userData(initData: String!): WebAppUser!
 }
 
-type User {
+type WebAppUser {
 	id: Int!
 	isBot: Boolean
 	firstName: String!

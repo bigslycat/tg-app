@@ -10,7 +10,7 @@ use std::collections::BTreeMap;
 type HmacSha256 = Hmac<Sha256>;
 
 #[derive(Debug, Clone, Serialize, Deserialize, SimpleObject)]
-pub struct User {
+pub struct WebAppUser {
     pub id: i64,
     pub is_bot: Option<bool>,
     pub first_name: String,
@@ -23,11 +23,11 @@ pub struct User {
     pub photo_url: Option<String>,
 }
 
-impl User {
+impl WebAppUser {
     pub fn from_query(
         bot_token: &String,
         mut data: BTreeMap<String, String>,
-    ) -> Result<User, ParseError> {
+    ) -> Result<WebAppUser, ParseError> {
         println!("{:?}", data);
 
         let user_data = data.get("user").ok_or(ParseError::NoUserProperty)?.clone();
@@ -57,7 +57,7 @@ impl User {
             return Err(ParseError::WrongData);
         }
 
-        let deserialized = from_str::<User>(&user_data)?;
+        let deserialized = from_str::<WebAppUser>(&user_data)?;
 
         Ok(deserialized)
     }
