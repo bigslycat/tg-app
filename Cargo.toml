@@ -1,3 +1,9 @@
 [workspace]
 members = ["packages/*"]
 resolver = "2"
+description = "REST and GraphQL server for validating data received via the Telegram Mini App"
+publish = false
+license = "MIT"
+license-file = "LICENSE.md"
+repository = "https://github.com/bigslycat/tg-app-validate-service"
+authors = ["Pavel Tereschenko <me@stupidcat.wtf>"]
