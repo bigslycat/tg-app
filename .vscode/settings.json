@@ -1,3 +1,27 @@
 {
-  "rust-analyzer.linkedProjects": ["./packages/service/Cargo.toml"]
+  "[typescript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.inlineSuggest.suppressSuggestions": false
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.inlineSuggest.suppressSuggestions": false
+  },
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.maxTokenizationLineLength": 2500,
+    "editor.inlineSuggest.suppressSuggestions": false
+  },
+  "rust-analyzer.linkedProjects": ["./packages/service/Cargo.toml"],
+  "search.exclude": {
+    "**/.yarn": true,
+    "**/.pnp.*": true
+  },
+  "eslint.nodePath": ".yarn/sdks",
+  "prettier.prettierPath": ".yarn/sdks/prettier/index.cjs",
+  "typescript.tsdk": ".yarn/sdks/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }
