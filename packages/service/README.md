@@ -1,4 +1,4 @@
-# tg-app-validate-service
+# [tg-app-validate-service]
 
 [![Publish Docker image][Docker image workflow badge]][Docker image workflow]
 
@@ -8,6 +8,8 @@ App][Telegram Mini App].
 ## Usage
 
 ### Run Docker container
+
+We use this [docker image]:
 
 ```sh
 ducker run bigslycat/tg-app-validate-service \
@@ -88,6 +90,9 @@ You can use OpenAPI in 3 ways:
 
   And you can get the documentation this path: `/redoc`.
 
+[docker image]: https://hub.docker.com/r/bigslycat/tg-app-validate-service
+[tg-app-validate-service]:
+  https://github.com/bigslycat/tg-app/tree/main/packages/service#readme
 [Swagger-UI]: https://swagger.io/tools/swagger-ui/
 [RapiDoc]: https://rapidocweb.com
 [Redocly]: https://redocly.com

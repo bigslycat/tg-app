@@ -45,3 +45,4 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           repository: bigslycat/tg-app-validate-service
           short-description: ${{ github.event.repository.description }}
+          readme-filepath: ./packages/service/README.md
