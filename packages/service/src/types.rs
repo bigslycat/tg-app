@@ -2,6 +2,7 @@ use hex::FromHexError;
 use rocket::{http::Status, serde::json::Json, Responder};
 use serde::Serialize;
 use serde_json::error::Error as SerdeJsonError;
+use utoipa::ToSchema;
 
 #[derive(Clone)]
 pub struct Env {
@@ -11,8 +12,8 @@ pub struct Env {
 #[derive(Debug)]
 pub enum ParseError {
     WrongData,
-    NoHashProperty,
-    NoUserProperty,
+    NoProperty { name: String },
+    ParsePropertyError { name: String, value: String },
     SerializationError(SerdeJsonError),
     FromHexError(FromHexError),
 }
@@ -23,8 +24,13 @@ impl ParseError {
             ParseError::WrongData => "Validation filed".to_string(),
             ParseError::SerializationError(error) => error.to_string(),
             ParseError::FromHexError(error) => error.to_string(),
-            ParseError::NoHashProperty => "Missing `hash` property".to_string(),
-            ParseError::NoUserProperty => "Missing `user` property".to_string(),
+            ParseError::NoProperty { name } => format!("Missing `{}` property", name),
+            ParseError::ParsePropertyError { name, value } => {
+                format!(
+                    "Property `{}` parsing failed. Raw value:\n\n{}",
+                    name, value
+                )
+            }
         }
     }
 }
@@ -44,12 +50,12 @@ impl From<FromHexError> for ParseError {
 #[derive(Responder)]
 #[response(content_type = "json", status = 400)]
 pub struct ErrorResponse {
-    inner: (Status, Json<ErrorResponseBody>),
+    pub inner: (Status, Json<ErrorResponseBody>),
 }
 
-#[derive(Serialize)]
-struct ErrorResponseBody {
-    message: String,
+#[derive(Serialize, ToSchema)]
+pub struct ErrorResponseBody {
+    pub message: String,
 }
 
 impl From<ParseError> for ErrorResponse {

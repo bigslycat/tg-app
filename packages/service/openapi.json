@@ -1,0 +1,200 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "tg-app-validate",
+    "description": "Service for validating data received via the Telegram Mini App",
+    "contact": {
+      "name": "Pavel Tereschenko",
+      "email": "me@stupidcat.wtf"
+    },
+    "license": {
+      "name": "MIT"
+    },
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/parse": {
+      "get": {
+        "tags": [
+          "crate::routes"
+        ],
+        "operationId": "parse_request",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WebAppInitData"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseBody"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ChatType": {
+        "type": "string",
+        "enum": [
+          "sender",
+          "private",
+          "group",
+          "supergroup",
+          "channel"
+        ]
+      },
+      "ErrorResponseBody": {
+        "type": "object",
+        "required": [
+          "message"
+        ],
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "WebAppInitData": {
+        "type": "object",
+        "required": [
+          "auth_date",
+          "hash"
+        ],
+        "properties": {
+          "auth_date": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0
+          },
+          "can_send_after": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "minimum": 0
+          },
+          "chat": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/WebAppUser"
+              }
+            ],
+            "nullable": true
+          },
+          "chat_instance": {
+            "type": "string",
+            "nullable": true
+          },
+          "chat_type": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ChatType"
+              }
+            ],
+            "nullable": true
+          },
+          "hash": {
+            "type": "string"
+          },
+          "query_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "receiver": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/WebAppUser"
+              }
+            ],
+            "nullable": true
+          },
+          "start_param": {
+            "type": "string",
+            "nullable": true
+          },
+          "user": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/WebAppUser"
+              }
+            ],
+            "nullable": true
+          }
+        }
+      },
+      "WebAppUser": {
+        "type": "object",
+        "required": [
+          "id",
+          "first_name"
+        ],
+        "properties": {
+          "added_to_attachment_menu": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "allows_write_to_pm": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "first_name": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "is_bot": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "is_premium": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "language_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "last_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "photo_url": {
+            "type": "string",
+            "nullable": true
+          },
+          "username": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      }
+    }
+  }
+}
