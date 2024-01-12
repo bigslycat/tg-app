@@ -26,10 +26,22 @@ server root.
 
 ```gql
 type Query {
-  userData(initData: String!): WebAppUser!
+  webAppInitData(initData: String!): WebAppInitData!
 }
 
-# WebAppUser https://core.telegram.org/bots/webapps#webappuser
+type WebAppInitData {
+  queryId: String
+  user: WebAppUser
+  receiver: WebAppUser
+  chat: WebAppUser
+  chatType: ChatType
+  chatInstance: String
+  startParam: String
+  canSendAfter: Int
+  authDate: Int!
+  hash: String!
+}
+
 type WebAppUser {
   id: Int!
   isBot: Boolean
@@ -41,6 +53,18 @@ type WebAppUser {
   addedToAttachmentMenu: Boolean
   allowsWriteToPm: Boolean
   photoUrl: String
+}
+
+enum ChatType {
+  SENDER
+  PRIVATE
+  GROUP
+  SUPER_GROUP
+  CHANNEL
+}
+
+schema {
+  query: Query
 }
 ```
 
