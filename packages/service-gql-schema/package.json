@@ -1,0 +1,29 @@
+{
+  "name": "@tg-app/validation-service-gql-schema",
+  "version": "1.0.0",
+  "description": "GraphQL schema for tg-app-validate-service",
+  "files": [
+    "lib",
+    "src",
+    "index.d.ts",
+    "README.md",
+    "LICENSE.md"
+  ],
+  "main": "./lib/schema.js",
+  "module": "./lib/schema.mjs",
+  "jsnext:main": "./lib/schema.mjs",
+  "typings": "./index.d.ts",
+  "scripts": {
+    "build": "tsup"
+  },
+  "peerDependencies": {
+    "graphql": "^16.8.1",
+    "graphql-tag": "^2.12.6"
+  },
+  "devDependencies": {
+    "graphql": "^16.8.1",
+    "graphql-tag": "^2.12.6",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3"
+  }
+}
