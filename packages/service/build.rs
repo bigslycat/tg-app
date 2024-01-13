@@ -32,26 +32,12 @@ fn main() -> Result<(), std::io::Error> {
         .sdl();
 
     let some_n_regex = Regex::new("\n{2,}").unwrap();
-    let n_with_regex = Regex::new("(^|\n)([^\n])").unwrap();
     let schema = some_n_regex
         .replace_all(schema.trim(), "\n\n")
         .into_owned()
         .replace("\t", "  ");
 
     std::fs::write("./Schema.gql", &schema)?;
-    std::fs::write(
-        "../service-gql-schema/src/schema.ts",
-        [
-            "import { gql } from 'graphql-tag'",
-            "export const Schema = gql`",
-            n_with_regex
-                .replace_all(schema.as_str(), "$1  $2")
-                .into_owned()
-                .as_str(),
-            "`\n",
-        ]
-        .join("\n"),
-    )?;
 
     let open_api = ApiDoc::openapi().to_pretty_json().unwrap();
 
