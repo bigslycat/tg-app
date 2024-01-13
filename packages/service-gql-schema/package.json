@@ -2,6 +2,9 @@
   "name": "@tg-app/validation-service-gql-schema",
   "version": "1.0.0",
   "description": "GraphQL schema for tg-app-validate-service",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "files": [
     "lib",
     "src",
