@@ -8,26 +8,25 @@
   },
   "files": [
     "lib",
-    "src",
     "index.d.ts",
     "README.md",
     "LICENSE.md"
   ],
-  "main": "./lib/schema.js",
+  "main": "./lib/schema.cjs",
   "module": "./lib/schema.mjs",
   "jsnext:main": "./lib/schema.mjs",
   "typings": "./index.d.ts",
   "scripts": {
-    "build": "tsup"
+    "build": "ts-node tools/build"
   },
   "peerDependencies": {
-    "graphql": "^16.8.1",
-    "graphql-tag": "^2.12.6"
+    "graphql": "^16.0.0"
   },
   "devDependencies": {
+    "@graphql-tools/utils": "^10.0.12",
+    "@types/node": "^20.11.0",
     "graphql": "^16.8.1",
-    "graphql-tag": "^2.12.6",
-    "tsup": "^8.0.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   }
 }
