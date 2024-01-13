@@ -21,7 +21,7 @@ pub enum ParseError {
 impl ParseError {
     pub fn to_string(&self) -> String {
         match self {
-            ParseError::WrongData => "Validation filed".to_string(),
+            ParseError::WrongData => "Validation failed".to_string(),
             ParseError::SerializationError(error) => error.to_string(),
             ParseError::FromHexError(error) => error.to_string(),
             ParseError::NoProperty { name } => format!("Missing `{}` property", name),
