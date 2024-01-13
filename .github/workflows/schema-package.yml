@@ -16,6 +16,6 @@ jobs:
           node-version: '20.x'
           registry-url: 'https://registry.npmjs.org'
       - run: yarn rebuild
-      - run: yarn build
+      - run: yarn workspace @tg-app/validation-service-gql-schema build
       - run: yarn config set 'npmRegistries["//registry.npmjs.org"].npmAuthToken' ${{ secrets.NPM_TOKEN }}
       - run: yarn workspace @tg-app/validation-service-gql-schema npm publish
