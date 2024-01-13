@@ -2,7 +2,8 @@ FROM rust:1.74.1-alpine3.18 as builder
 
 WORKDIR /app
 
-COPY packages/service packages/service
+COPY packages/service/src packages/service/src
+COPY packages/service/Cargo.toml packages/service
 COPY Cargo.lock .
 COPY Cargo.toml .
 
