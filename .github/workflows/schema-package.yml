@@ -21,4 +21,4 @@ jobs:
           yarn config set npmScopes.tg-app.npmAuthToken $NPM_AUTH_TOKEN
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - run: yarn workspace @tg-app/validation-service-gql-schema npm publish --access=public
+      - run: yarn workspace @tg-app/validation-service-gql-schema npm publish

@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "GraphQL schema for tg-app-validate-service",
   "publishConfig": {
-    "registry": "https://registry.npmjs.org"
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
   },
   "files": [
     "lib",
