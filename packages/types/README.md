@@ -2,6 +2,14 @@
 
 [Telegram Mini App] type definitions.
 
+## Install
+
+```sh
+npm i -S @tg-app/types
+# or
+yarn add @tg-app/types
+```
+
 ## Usage
 
 ### Direct import
