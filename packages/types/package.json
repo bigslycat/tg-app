@@ -4,7 +4,7 @@
   "main": "./lib/telegram.js",
   "module": "./lib/telegram.mjs",
   "jsnext:main": "./lib/telegram.mjs",
-  "typings": "./telegram.d.ts",
+  "typings": "./lib/telegram.d.ts",
   "exports": {
     ".": {
       "types": "./lib/telegram.d.ts",
