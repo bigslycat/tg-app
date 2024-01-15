@@ -78,8 +78,11 @@ export namespace Telegram {
     color: string
     textColor: string
     isVisible: boolean
-    isProgressVisible: boolean
     isActive: boolean
+    isProgressVisible: boolean
+    setText(text?: string | null): void
+    onClick(cb: () => void): void
+    offClick(cb: () => void): void
     show(): void
     hide(): void
     enable(): void
@@ -101,12 +104,18 @@ export namespace Telegram {
 
   export interface BackButton {
     isVisible: boolean
+    onClick(cb: () => void): void
+    offClick(cb: () => void): void
     show(): void
     hide(): void
   }
 
   export interface SettingsButton {
     isVisible: boolean
+    onClick(cb: () => void): void
+    offClick(cb: () => void): void
+    show(): void
+    hide(): void
   }
 
   export interface HapticFeedback {
