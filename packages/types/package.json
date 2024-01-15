@@ -21,7 +21,9 @@
   },
   "files": [
     "lib",
-    "src"
+    "src",
+    "README.md",
+    "LICENSE.md"
   ],
   "scripts": {
     "build": "tsup"
