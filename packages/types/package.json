@@ -25,6 +25,10 @@
     "README.md",
     "LICENSE.md"
   ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
   "scripts": {
     "build": "tsup"
   },
