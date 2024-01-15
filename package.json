@@ -4,7 +4,8 @@
   "private": true,
   "packageManager": "yarn@4.0.2",
   "workspaces": [
-    "packages/service-gql-schema"
+    "packages/service-gql-schema",
+    "packages/types"
   ],
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.17.0",

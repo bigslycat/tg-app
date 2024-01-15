@@ -1,0 +1,33 @@
+{
+  "name": "@tg-app/types",
+  "version": "1.0.0",
+  "main": "./lib/telegram.js",
+  "module": "./lib/telegram.mjs",
+  "jsnext:main": "./lib/telegram.mjs",
+  "typings": "./telegram.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/telegram.d.ts",
+      "import": "./lib/telegram.mjs",
+      "require": "./lib/telegram.js",
+      "default": "./lib/telegram.mjs"
+    },
+    "./global": {
+      "types": "./lib/global.d.ts",
+      "import": "./lib/global.mjs",
+      "require": "./lib/global.js",
+      "default": "./lib/global.mjs"
+    }
+  },
+  "files": [
+    "lib",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsup"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3"
+  }
+}
