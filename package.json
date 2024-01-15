@@ -4,6 +4,7 @@
   "private": true,
   "packageManager": "yarn@4.0.2",
   "workspaces": [
+    "packages/client",
     "packages/service-gql-schema",
     "packages/types"
   ],

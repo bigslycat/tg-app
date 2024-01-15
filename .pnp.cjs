@@ -14,6 +14,10 @@ const RAW_RUNTIME_STATE =
       "reference": "workspace:."\
     },\
     {\
+      "name": "@tg-app/validate-service-client",\
+      "reference": "workspace:packages/client"\
+    },\
+    {\
       "name": "@tg-app/validation-service-gql-schema",\
       "reference": "workspace:packages/service-gql-schema"\
     },\
@@ -26,6 +30,7 @@ const RAW_RUNTIME_STATE =
   "ignorePatternData": "(^(?:\\\\.yarn\\\\/sdks(?:\\\\/(?!\\\\.{1,2}(?:\\\\/|$))(?:(?:(?!(?:^|\\\\/)\\\\.{1,2}(?:\\\\/|$)).)*?)|$))$)",\
   "fallbackExclusionList": [\
     ["@tg-app/types", ["workspace:packages/types"]],\
+    ["@tg-app/validate-service-client", ["workspace:packages/client"]],\
     ["@tg-app/validation-service-gql-schema", ["workspace:packages/service-gql-schema"]],\
     ["tg-app", ["workspace:."]]\
   ],\
@@ -727,6 +732,19 @@ const RAW_RUNTIME_STATE =
         "linkType": "SOFT"\
       }]\
     ]],\
+    ["@tg-app/validate-service-client", [\
+      ["workspace:packages/client", {\
+        "packageLocation": "./packages/client/",\
+        "packageDependencies": [\
+          ["@tg-app/validate-service-client", "workspace:packages/client"],\
+          ["@tg-app/types", "workspace:packages/types"],\
+          ["@types/node", "npm:20.11.2"],\
+          ["tsup", "virtual:3e541e8a31c8490eca23b4174f8500ccf2f402137343ca55dd89df7fdec1c9fec3666cfe316960895ca9befdfdd0cf0eb2e4a9fc2114a40243698de1445cc556#npm:8.0.1"],\
+          ["typescript", "patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"]\
+        ],\
+        "linkType": "SOFT"\
+      }]\
+    ]],\
     ["@tg-app/validation-service-gql-schema", [\
       ["workspace:packages/service-gql-schema", {\
         "packageLocation": "./packages/service-gql-schema/",\
@@ -858,6 +876,14 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/@types-node-npm-20.11.0-cb757f0c2a-560aa850df.zip/node_modules/@types/node/",\
         "packageDependencies": [\
           ["@types/node", "npm:20.11.0"],\
+          ["undici-types", "npm:5.26.5"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:20.11.2", {\
+        "packageLocation": "./.yarn/cache/@types-node-npm-20.11.2-767862562e-11a935f667.zip/node_modules/@types/node/",\
+        "packageDependencies": [\
+          ["@types/node", "npm:20.11.2"],\
           ["undici-types", "npm:5.26.5"]\
         ],\
         "linkType": "HARD"\

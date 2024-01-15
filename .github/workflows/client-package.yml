@@ -1,0 +1,20 @@
+name: Publish @tg-app/validate-service-client package
+
+on:
+  push:
+    tags:
+      - client/v[0-9]+.[0-9]+.[0-9]+
+
+jobs:
+  push_to_registry:
+    name: Build and publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+      - run: yarn rebuild
+      - run: yarn config set npmScopes.tg-app.npmAuthToken ${{ secrets.NPM_TOKEN }}
+      - run: yarn workspace @tg-app/validate-service-client build
+      - run: yarn workspace @tg-app/validate-service-client npm publish
