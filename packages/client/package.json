@@ -4,7 +4,7 @@
   "main": "./lib/web-client.js",
   "module": "./lib/web-client.mjs",
   "jsnext:main": "./lib/web-client.mjs",
-  "typings": "./web-client.d.ts",
+  "typings": "./lib/web-client.d.ts",
   "exports": {
     ".": {
       "types": "./lib/web-client.d.ts",
