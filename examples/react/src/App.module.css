@@ -1,0 +1,44 @@
+:root {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--tg-theme-bg-color);
+  color: var(--tg-theme-text-color);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card {
+  background-color: var(--tg-theme-secondary-bg-color);
+  padding: 12px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cardHeader {
+  padding: 0;
+  margin: 0;
+}
+
+.checkbox {
+  cursor: pointer;
+
+  input {
+    height: 1em;
+    width: 1em;
+  }
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}

@@ -4,7 +4,9 @@
   "private": true,
   "packageManager": "yarn@4.0.2",
   "workspaces": [
+    "examples/react",
     "packages/client",
+    "packages/react",
     "packages/service-gql-schema",
     "packages/types"
   ],

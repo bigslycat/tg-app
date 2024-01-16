@@ -1,3 +1,5 @@
+/examples/react/dist
 /packages/client/lib
+/packages/react/lib
 /packages/service-gql-schema/lib
 /packages/types/lib
