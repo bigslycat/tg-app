@@ -16,5 +16,7 @@ jobs:
           node-version: 20.x
       - run: yarn rebuild
       - run: yarn config set npmScopes.tg-app.npmAuthToken ${{ secrets.NPM_TOKEN }}
+      - run: yarn workspace @tg-app/types build
+      - run: yarn workspace @tg-app/validate-service-client build
       - run: yarn workspace @tg-app/react build
       - run: yarn workspace @tg-app/react npm publish
