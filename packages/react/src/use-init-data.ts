@@ -1,7 +1,7 @@
-import { useContext, useEffect, useMemo, useState } from 'react'
+import { useContext, useEffect, useMemo } from 'react'
 
 import { Telegram } from '@tg-app/types'
-import type { HttpError } from '@tg-app/validate-service-client'
+import { HttpError } from '@tg-app/validate-service-client'
 
 import { AppContext } from './app-provider'
 import { Store } from './store'
@@ -18,6 +18,8 @@ interface State {
   readonly pending: boolean
   readonly error: Error | HttpError | null
 }
+
+export { HttpError }
 
 export function useInitData() {
   const { client } = useContext(AppContext)
