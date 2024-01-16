@@ -1,6 +1,7 @@
 {
   "name": "@tg-app/validate-service-client",
   "version": "1.0.1",
+  "description": "Client for tg-app-validate-service for frontend and Node.js",
   "main": "./lib/web-client.js",
   "module": "./lib/web-client.mjs",
   "jsnext:main": "./lib/web-client.mjs",
