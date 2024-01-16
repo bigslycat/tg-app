@@ -21,12 +21,13 @@ mod user;
 #[rocket::launch]
 fn rocket() -> _ {
     let bot_token = var("BOT_TOKEN").expect("Environment variable `BOT_TOKEN` is not defined.");
+    let port = var("PORT").ok().and_then(|x| x.parse::<u16>().ok()).unwrap_or(80);
 
     let env = Env { bot_token };
 
     let mut build = rocket::build()
         .configure(rocket::Config {
-            port: 80,
+            port,
             address: IpAddr::V4(Ipv4Addr::new(0, 0, 0, 0)),
             ..rocket::Config::default()
         })
