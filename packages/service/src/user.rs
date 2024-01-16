@@ -13,14 +13,30 @@ type HmacSha256 = Hmac<Sha256>;
 
 #[derive(Debug, Clone, Serialize, Deserialize, SimpleObject, ToSchema)]
 pub struct WebAppInitData {
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub query_id: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub user: Option<WebAppUser>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub receiver: Option<WebAppUser>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub chat: Option<WebAppUser>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub chat_type: Option<ChatType>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub chat_instance: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub start_param: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub can_send_after: Option<u32>,
+
     pub auth_date: u64,
     pub hash: String,
 }
@@ -172,13 +188,30 @@ impl std::str::FromStr for ChatType {
 #[derive(Debug, Clone, Serialize, Deserialize, SimpleObject, ToSchema)]
 pub struct WebAppUser {
     pub id: i64,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub is_bot: Option<bool>,
+
     pub first_name: String,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub last_name: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub username: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub language_code: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub is_premium: Option<bool>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub added_to_attachment_menu: Option<bool>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub allows_write_to_pm: Option<bool>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub photo_url: Option<String>,
 }
