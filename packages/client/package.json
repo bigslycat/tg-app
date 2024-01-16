@@ -37,7 +37,7 @@
     "@tg-app/types": "^1.0.1"
   },
   "devDependencies": {
-    "@types/node": "^20.11.2",
+    "@types/node": "^20.11.4",
     "tsup": "^8.0.1",
     "typescript": "^5.3.3"
   }
