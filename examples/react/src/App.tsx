@@ -12,12 +12,15 @@ export const Root: FC = () => {
   const [disableMainButton, setDisableMainButton] = useState(false)
   const [pendingMainButton, setPendingMainButton] = useState(false)
   const [mainButtonText, setMainButtonText] = useState('')
+
   const [mainButtonColor, setMainButtonColor] = useState(
     () => window.Telegram?.WebApp.themeParams.button_color,
   )
+
   const [mainButtonTextColor, setMainButtonTextColor] = useState(
     () => window.Telegram?.WebApp.themeParams.button_text_color,
   )
+
   const [showSettingsButton, setShowSettingsButton] = useState(false)
 
   return (
