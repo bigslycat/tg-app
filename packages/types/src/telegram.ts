@@ -58,19 +58,19 @@ export namespace Telegram {
   }
 
   export interface ThemeParams {
-    accent_text_color?: string
-    bg_color?: string
-    button_color?: string
-    button_text_color?: string
-    destructive_text_color?: string
-    header_bg_color?: string
-    hint_color?: string
-    link_color?: string
-    secondary_bg_color?: string
-    section_bg_color?: string
-    section_header_text_color?: string
-    subtitle_text_color?: string
-    text_color?: string
+    readonly accent_text_color?: string
+    readonly bg_color?: string
+    readonly button_color?: string
+    readonly button_text_color?: string
+    readonly destructive_text_color?: string
+    readonly header_bg_color?: string
+    readonly hint_color?: string
+    readonly link_color?: string
+    readonly secondary_bg_color?: string
+    readonly section_bg_color?: string
+    readonly section_header_text_color?: string
+    readonly subtitle_text_color?: string
+    readonly text_color?: string
   }
 
   export interface MainButton {
@@ -159,7 +159,7 @@ export namespace Telegram {
     initDataUnsafe: WebAppInitData
     version: string
     platform: string
-    colorScheme: 'dark' | 'light'
+    colorScheme: ColorScheme
     themeParams: ThemeParams
     isExpanded: boolean
     viewportHeight: number
@@ -212,7 +212,6 @@ export namespace Telegram {
         | EventType.MainButtonClicked
         | EventType.PopupClosed
         | EventType.SettingsButtonClicked
-        | EventType.ThemeChange
         | EventType.ViewportChanged,
       handler: () => void,
     ): void
@@ -223,12 +222,21 @@ export namespace Telegram {
         | EventType.MainButtonClicked
         | EventType.PopupClosed
         | EventType.SettingsButtonClicked
-        | EventType.ThemeChange
         | EventType.ViewportChanged,
       handler: () => void,
     ): void
 
     onEvent(
+      type: EventType.ThemeChanged,
+      handler: (this: ThemeChangedHandlerContext) => void,
+    ): void
+
+    offEvent(
+      type: EventType.ThemeChanged,
+      handler: (this: ThemeChangedHandlerContext) => void,
+    ): void
+
+    onEvent(
       type: EventType.InvoiceClosed,
       handler: (event: InvoiceClosedEvent) => void,
     ): void
@@ -277,6 +285,16 @@ export namespace Telegram {
       type: EventType.ContactRequested,
       handler: (event: ContactRequestedEvent) => void,
     ): void
+  }
+
+  export enum ColorScheme {
+    Light = 'light',
+    Dark = 'dark',
+  }
+
+  export interface ThemeChangedHandlerContext {
+    readonly colorScheme: ColorScheme
+    readonly themeParams: ThemeParams
   }
 
   export interface ScanQrPopupParams {
@@ -309,7 +327,7 @@ export namespace Telegram {
   }
 
   export enum EventType {
-    ThemeChange = 'themeChanged',
+    ThemeChanged = 'themeChanged',
     ViewportChanged = 'viewportChanged',
     MainButtonClicked = 'mainButtonClicked',
     BackButtonClicked = 'backButtonClicked',
