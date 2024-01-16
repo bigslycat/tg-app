@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
-          node-version: 20.x
+          node-version: 21.5.0
       - run: yarn rebuild
       - run: yarn config set npmScopes.tg-app.npmAuthToken ${{ secrets.NPM_TOKEN }}
       - run: yarn workspace @tg-app/validate-service-client build
