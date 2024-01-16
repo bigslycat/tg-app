@@ -802,7 +802,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@tg-app/react@workspace:packages/react"
   dependencies:
-    "@tg-app/types": "npm:^1.0.0"
+    "@tg-app/types": "npm:^1.0.1"
     "@tg-app/validate-service-client": "npm:^1.0.0"
     "@types/react": "npm:^18"
     react: "npm:^18.2.0"
@@ -813,7 +813,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@tg-app/types@npm:^1.0.0, @tg-app/types@workspace:^, @tg-app/types@workspace:packages/types":
+"@tg-app/types@npm:^1.0.1, @tg-app/types@workspace:^, @tg-app/types@workspace:packages/types":
   version: 0.0.0-use.local
   resolution: "@tg-app/types@workspace:packages/types"
   dependencies:
@@ -826,7 +826,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@tg-app/validate-service-client@workspace:packages/client"
   dependencies:
-    "@tg-app/types": "npm:^1.0.0"
+    "@tg-app/types": "npm:^1.0.1"
     "@types/node": "npm:^20.11.2"
     tsup: "npm:^8.0.1"
     typescript: "npm:^5.3.3"

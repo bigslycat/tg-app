@@ -33,7 +33,7 @@
     "build": "tsup"
   },
   "dependencies": {
-    "@tg-app/types": "^1.0.0"
+    "@tg-app/types": "^1.0.1"
   },
   "devDependencies": {
     "@types/node": "^20.11.2",

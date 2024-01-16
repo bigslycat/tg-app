@@ -20,7 +20,7 @@
     "build": "tsup"
   },
   "dependencies": {
-    "@tg-app/types": "^1.0.0",
+    "@tg-app/types": "^1.0.1",
     "@tg-app/validate-service-client": "^1.0.0"
   },
   "devDependencies": {
