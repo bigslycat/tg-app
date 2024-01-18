@@ -1,6 +1,6 @@
 [package]
 name = "service"
-version = "2.3.0"
+version = "2.3.1"
 description = "REST and GraphQL server for validating data received via the Telegram Mini App"
 publish = false
 license = "MIT"
