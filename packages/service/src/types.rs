@@ -1,13 +1,7 @@
 use hex::FromHexError;
-use rocket::{
-    fairing::{Fairing, Info, Kind},
-    http::{Header, Status},
-    serde::json::Json,
-    Request, Responder, Response,
-};
+use rocket::{http::Status, serde::json::Json, Responder};
 use serde::Serialize;
 use serde_json::error::Error as SerdeJsonError;
-use std::env::var;
 use utoipa::ToSchema;
 
 #[derive(Clone)]
