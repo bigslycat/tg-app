@@ -1,7 +1,13 @@
 use hex::FromHexError;
-use rocket::{http::Status, serde::json::Json, Responder};
+use rocket::{
+    fairing::{Fairing, Info, Kind},
+    http::{Header, Status},
+    serde::json::Json,
+    Request, Responder, Response,
+};
 use serde::Serialize;
 use serde_json::error::Error as SerdeJsonError;
+use std::env::var;
 use utoipa::ToSchema;
 
 #[derive(Clone)]
@@ -68,5 +74,46 @@ impl From<ParseError> for ErrorResponse {
                 }),
             ),
         }
+    }
+}
+
+pub struct Cors;
+
+#[rocket::async_trait]
+impl Fairing for Cors {
+    fn info(&self) -> Info {
+        Info {
+            name: "Add CORS headers to responses",
+            kind: Kind::Response,
+        }
+    }
+
+    async fn on_response<'r>(&self, _request: &'r Request<'_>, response: &mut Response<'r>) {
+        response.set_header(Header::new(
+            "Access-Control-Allow-Origin",
+            var("ACCESS_CONTROL_ALLOW_ORIGIN")
+                .ok()
+                .unwrap_or("*".to_string()),
+        ));
+
+        response.set_header(Header::new(
+            "Access-Control-Allow-Methods",
+            var("ACCESS_CONTROL_ALLOW_METHODS")
+                .ok()
+                .unwrap_or("POST, GET, OPTIONS".to_string()),
+        ));
+        response.set_header(Header::new(
+            "Access-Control-Allow-Headers",
+            var("ACCESS_CONTROL_ALLOW_HEADERS")
+                .ok()
+                .unwrap_or("POST, GET, OPTIONS".to_string()),
+        ));
+
+        response.set_header(Header::new(
+            "Access-Control-Allow-Credentials",
+            var("ACCESS_CONTROL_ALLOW_CREDENTIALS")
+                .ok()
+                .unwrap_or("true".to_string()),
+        ));
     }
 }
