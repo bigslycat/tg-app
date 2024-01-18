@@ -1,12 +1,14 @@
 use api_doc::ApiDoc;
 use async_graphql::{EmptyMutation, EmptySubscription, Schema as GqlSchema};
+use rocket::http::Method;
+use rocket_cors::{AllowedOrigins, CorsOptions};
 use routes::{graphiql, graphql_query, graphql_request, openapi, parse_request};
 pub use schema::Query;
 use std::{
     env::var,
     net::{IpAddr, Ipv4Addr},
 };
-use types::{Cors, Env};
+use types::Env;
 use utoipa::OpenApi;
 use utoipa_rapidoc::RapiDoc;
 use utoipa_redoc::{Redoc, Servable};
@@ -28,8 +30,18 @@ fn rocket() -> _ {
 
     let env = Env { bot_token };
 
+    let cors = CorsOptions::default()
+        .allowed_origins(AllowedOrigins::all())
+        .allowed_methods(
+            vec![Method::Get, Method::Post, Method::Patch, Method::Options]
+                .into_iter()
+                .map(From::from)
+                .collect(),
+        )
+        .allow_credentials(true);
+
     let mut build = rocket::build()
-        .attach(Cors)
+        .attach(cors.to_cors().unwrap())
         .configure(rocket::Config {
             port,
             address: IpAddr::V4(Ipv4Addr::new(0, 0, 0, 0)),

@@ -23,6 +23,7 @@ utoipa = { version = "4.2.0", features = ["rocket_extras"] }
 utoipa-swagger-ui = { version = "6.0.0", features = ["rocket"] }
 utoipa-redoc = { version = "3.0.0", features = ["rocket"] }
 utoipa-rapidoc = { version = "3.0.0", features = ["rocket"] }
+rocket_cors = "0.6.0"
 
 [build-dependencies]
 sha2 = "0.10.8"
