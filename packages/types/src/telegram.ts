@@ -53,7 +53,7 @@ export namespace Telegram {
     chat_instance?: string
     start_param?: string
     can_send_after?: number
-    auth_date: string
+    auth_date: number
     hash: string
   }
 
